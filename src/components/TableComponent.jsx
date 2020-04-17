@@ -32,9 +32,8 @@ class TableComponent extends React.Component {
     }
 
     upvoteStory(objectID) {
-        let upvotesList = localStorage.getItem('upvotes') || [];
+        let upvotesList = localStorage.getItem('upvotes') || "";
         if(upvotesList.indexOf(objectID) > -1){
-            alert('duplicate');
             return;
         }
         upvotesList = upvotesList.split(','); 
@@ -44,7 +43,7 @@ class TableComponent extends React.Component {
     }
 
     updateStoriesWithUpvote(){
-        let upvotesList = localStorage.getItem('upvotes');
+        let upvotesList = localStorage.getItem('upvotes') || "";
         upvotesList = upvotesList.split(','); 
         var storyChangedList = _.forEach(this.state.stories, element => {
             return _.find(upvotesList, ele => {
@@ -61,7 +60,6 @@ class TableComponent extends React.Component {
     render() {   
         let stories = this.state.stories,
         story_listing = [];
-        console.log(stories);
         {stories.map((story, index) => {
             story_listing.push(
                 <tr key={story.objectID}>
