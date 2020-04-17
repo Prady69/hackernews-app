@@ -63,13 +63,13 @@ class TableComponent extends React.Component {
         {stories.map((story, index) => {
             story_listing.push(
                 <tr key={story.objectID}>
-                    <th width="50">{(this.state.page-1)*20 + index + 1}</th>
-                    <th>{story.upVote && '1'} {story.upVote !== true && <i onClick={()=>this.upvoteStory(story.objectID)} className="fa fa-sort-asc" aria-hidden="true"></i>}</th>
                     <td>
+                        <span className="story-comments"> {story.num_comments || 0} </span>
+                        <span>{story.upVote ? 1 : 0} {<i onClick={()=>this.upvoteStory(story.objectID)} className="fa fa-sort-asc" aria-hidden="true"></i>}</span>
                         <span className="story-title"> {story.story_title || story.title} </span>
                         <span className="story-url"> <a href={story.story_url || story.url}>( Domain )</a> </span>
                         <span className="story-auther"> by <b>{story.author}</b> </span>
-                        <span className="story-date"> {(story.created_at_i)} </span>
+                        <span className="story-date"> {(new Date("2020-04-17T15:26:28.000Z").toLocaleString())} </span>
                         <span className="story-unvote" > {story.upVote === true && '| unvote | '} </span>
                         <span className="story-hide" onClick={()=>this.hideRowData(story.objectID)}> [ Hide ] </span> 
                     </td>

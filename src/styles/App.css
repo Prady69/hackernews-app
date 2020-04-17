@@ -12,6 +12,10 @@ span.new.active a {
   color:white; 
 }
 
+.story-comments{
+  margin-right: 30px;
+}
+
 .new {
   padding-left: 10px;
 }
